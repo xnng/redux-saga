@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { connect } from "react-redux";
+import { increment } from "./actions/counter";
 
 class App extends Component {
   render() {
@@ -19,10 +21,21 @@ class App extends Component {
           >
             Learn React
           </a>
+          {this.props.counter}
+          <p>
+            <button onClick={this.props.increment}>+</button>
+          </p>
         </header>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  counter: state.counter
+});
+
+export default connect(
+  mapStateToProps,
+  { increment }
+)(App);
