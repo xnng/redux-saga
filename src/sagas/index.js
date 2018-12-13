@@ -1,5 +1,5 @@
 import { INCREMENT_ASYNC } from "../constants/counter";
-import { takeEvery, put } from "redux-saga/effects";
+import { takeLatest, put } from "redux-saga/effects";
 import { delay } from "redux-saga";
 
 function* incrementAsync() {
@@ -8,5 +8,5 @@ function* incrementAsync() {
 }
 
 export function* watchIncrementAsync() {
-  yield takeEvery(INCREMENT_ASYNC, incrementAsync);
+  yield takeLatest(INCREMENT_ASYNC, incrementAsync);
 }

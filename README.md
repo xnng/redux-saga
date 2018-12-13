@@ -50,3 +50,7 @@ export function* watchIncrementAsync() {
 ```
 
 `takeEvery` 用来监听 Action
+
+`takeEvery` 会发送每一个 Action
+
+`takeLatest` 会在等待时间内发送最后一个 Action
