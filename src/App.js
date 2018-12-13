@@ -6,6 +6,17 @@ import { get_user } from "./actions/user";
 
 class App extends Component {
   render() {
+    const { isFetching, error, user } = this.props.user;
+    let data;
+
+    if (error) {
+      data = error;
+    } else if (isFetching) {
+      data = "Loading";
+    } else {
+      data = user && user[0].data[0].name
+    }
+
     return (
       <div className="App">
         <header className="App-header">
@@ -17,17 +28,21 @@ class App extends Component {
             <br />
             <button onClick={this.props.get_user}>Get User</button>
           </p>
+          <h1>{data}</h1>
         </header>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  counter: state.counter
-});
+const mapStateToProps = state => {
+  return {
+    counter: state.counter,
+    user: state.user
+  };
+};
 
 export default connect(
   mapStateToProps,
-  { increment, incrementAsync,get_user }
+  { increment, incrementAsync, get_user }
 )(App);
