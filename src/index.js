@@ -10,7 +10,7 @@ import rootReducer from "./reducers";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import createSagaMiddleware from "redux-saga";
-import { watchIncrementAsync } from "./sagas";
+import rootSaga from "./sagas";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -19,7 +19,7 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(sagaMiddleware))
 );
 
-sagaMiddleware.run(watchIncrementAsync);
+sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <Provider store={store}>
