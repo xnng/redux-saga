@@ -26,3 +26,27 @@ ReactDOM.render(
 ```bash
 $ yarn add redux-saga
 ```
+
+```js
+import createSagaMiddleware from "redux-saga";
+import { helloSaga } from "./sagas";
+
+const sagaMiddleware = createSagaMiddleware();
+
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(sagaMiddleware))
+);
+
+sagaMiddleware.run(helloSaga);
+```
+
+## 使用 redux-saga
+
+```js
+export function* watchIncrementAsync() {
+  yield takeEvery(INCREMENT_ASYNC, incrementAsync);
+}
+```
+
+`takeEvery` 用来监听 Action

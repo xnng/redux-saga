@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import { connect } from "react-redux";
-import { increment } from "./actions/counter";
+import { increment, incrementAsync } from "./actions/counter";
 
 class App extends Component {
   render() {
@@ -24,6 +24,8 @@ class App extends Component {
           {this.props.counter}
           <p>
             <button onClick={this.props.increment}>+</button>
+            <br />
+            <button onClick={this.props.incrementAsync}>async +</button>
           </p>
         </header>
       </div>
@@ -37,5 +39,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { increment }
+  { increment, incrementAsync }
 )(App);
