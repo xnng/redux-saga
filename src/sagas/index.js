@@ -13,11 +13,12 @@ function* watchIncrementAsync() {
 }
 
 function* fetchUser() {
-  const user = yield call(
-    axios.get,
-    "https://jsonplaceholder.typicode.com/users"
-  );
+  const [todos,user] = yield all([
+    call(axios.get,"https://jsonplaceholder.typicode.com/todos"),
+    call(axios.get,"https://jsonplaceholder.typicode.com/users")
+  ])
   console.log(user);
+  console.log(todos);
 }
 
 function* watchFetchUser() {
