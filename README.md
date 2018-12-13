@@ -20,3 +20,9 @@ ReactDOM.render(
   document.getElementById("root")
 );
 ```
+
+## install redux-saga
+
+```bash
+$ yarn add redux-saga
+```
